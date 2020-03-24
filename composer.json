@@ -1,0 +1,35 @@
+{
+  "name": "bytic/rest-client",
+  "license": "MIT",
+  "description": "bytic rest client",
+  "authors": [
+    {
+      "name": "Gabriel Solomon",
+      "email": "hello@gabrielsolomon.ro"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "ByTIC\\RestClient\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ByTIC\\RestClient\\Tests\\": "tests/src",
+      "ByTIC\\RestClient\\Tests\\Fixtures\\": "tests/fixtures"
+    }
+  },
+  "require": {
+    "php": "^7.1",
+    "psr/http-client": "^1.0",
+    "php-http/client-common": "^1.9 || 2.0",
+    "php-http/discovery": "^1.7",
+    "symfony/serializer": "^3.1|^4.0"
+  },
+  "require-dev": {
+    "php-http/guzzle6-adapter": "^2.0",
+    "http-interop/http-factory-guzzle": "^1.0",
+    "phpunit/phpunit": "^6.5|^7.2",
+    "mockery/mockery": "^1.0"
+  }
+}
