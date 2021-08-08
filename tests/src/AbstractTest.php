@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class AbstractTest extends TestCase
 {
-    protected function tearDown()
+    protected function tearDown() : void
     {
         parent::tearDown();
         Configuration::resetDefaultConfiguration();

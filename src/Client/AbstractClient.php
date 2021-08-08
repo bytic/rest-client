@@ -3,6 +3,7 @@
 namespace ByTIC\RestClient\Client;
 
 use ByTIC\RestClient\Client\Configuration\Configuration;
+use ByTIC\RestClient\Utility\Traits\HasStreamFactory;
 use Psr\Http\Client\ClientInterface;
 
 /**
@@ -18,7 +19,7 @@ abstract class AbstractClient
     use Traits\HasHttpClient;
     use Traits\HasRequestFactory;
     use Traits\HasSerializer;
-    use Traits\HasStreamFactory;
+    use HasStreamFactory;
 
     public const FETCH_RESPONSE = 'response';
     public const FETCH_OBJECT = 'object';

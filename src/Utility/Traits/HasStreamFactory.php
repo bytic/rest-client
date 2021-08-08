@@ -1,12 +1,12 @@
 <?php
 
-namespace ByTIC\RestClient\Client\Traits;
+namespace ByTIC\RestClient\Utility\Traits;
 
 use Psr\Http\Message\StreamFactoryInterface;
 
 /**
  * Trait HasStreamFactory
- * @package ByTIC\RestClient\Client\Traits
+ * @package ByTIC\RestClient\Utility\Traits
  */
 trait HasStreamFactory
 {
