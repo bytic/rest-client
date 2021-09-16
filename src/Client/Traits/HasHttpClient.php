@@ -2,8 +2,9 @@
 
 namespace ByTIC\RestClient\Client\Traits;
 
-use Http\Client\Common\Plugin\AddHostPlugin;
+use Http\Client\Common\Plugin\BaseUriPlugin;
 use Http\Client\Common\Plugin\ErrorPlugin;
+use Http\Client\Common\Plugin\HeaderDefaultsPlugin;
 use Http\Client\Common\PluginClient;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\UriInterface;
@@ -54,8 +55,12 @@ trait HasHttpClient
         $plugins = [new ErrorPlugin()];
         if ($uri instanceof UriInterface) {
             if ($uri->getHost()) {
-                $plugins[] = new AddHostPlugin($uri);
+                $plugins[] = new BaseUriPlugin($uri);
             }
+        }
+        $headers = $this->getConfiguration()->headers();
+        if (count($headers)) {
+            $plugins[] = new HeaderDefaultsPlugin($headers->all());
         }
         return new PluginClient($httpClient, $plugins);
     }

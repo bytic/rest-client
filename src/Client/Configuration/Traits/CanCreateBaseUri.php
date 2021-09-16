@@ -43,7 +43,7 @@ trait CanCreateBaseUri
         }
 
         $this->setBaseUri(
-            Psr17FactoryDiscovery::findUrlFactory()->createUri(
+            Psr17FactoryDiscovery::findUriFactory()->createUri(
                 $this->generateUriString()
             )
         );
