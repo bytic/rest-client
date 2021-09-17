@@ -3,6 +3,7 @@
 namespace ByTIC\RestClient\Client\Configuration;
 
 use ByTIC\RestClient\Headers\HasHeaders;
+use ByTIC\RestClient\Utility\Traits\HasUri;
 
 /**
  * Class Configuration
@@ -10,10 +11,9 @@ use ByTIC\RestClient\Headers\HasHeaders;
  */
 class Configuration
 {
-    use Traits\CanCreateBaseUri;
     use Traits\HasDefaultConfiguration;
     use Traits\HasFormats;
-    use Traits\HasHost;
-    use HasHeaders;
     use Traits\HasUserAgent;
+    use HasHeaders;
+    use HasUri;
 }

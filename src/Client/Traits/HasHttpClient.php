@@ -51,7 +51,7 @@ trait HasHttpClient
      */
     protected function decorateHttpClient(ClientInterface $httpClient)
     {
-        $uri = $this->getConfiguration()->getBaseUri();
+        $uri = $this->getConfiguration()->getUri();
         $plugins = [new ErrorPlugin()];
         if ($uri instanceof UriInterface) {
             if ($uri->getHost()) {

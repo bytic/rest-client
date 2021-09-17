@@ -12,3 +12,4 @@
 * https://github.com/voku/httpful
 * https://github.com/nategood/httpful
 * https://github.com/thephpleague/fractal
+* https://github.com/tcdent/php-restclient
