@@ -2,6 +2,7 @@
 
 namespace ByTIC\RestClient\Endpoints;
 
+use ByTIC\RestClient\Utility\Traits\HasUri;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**
@@ -11,7 +12,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 class DynamicEndpoint extends AbstractEndpoint
 {
     use Traits\DynamicMethod;
-    use Traits\DynamicUri;
+    use HasUri;
 
     /**
      * @inheritDoc

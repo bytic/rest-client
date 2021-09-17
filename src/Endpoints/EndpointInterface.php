@@ -4,6 +4,7 @@ namespace ByTIC\RestClient\Endpoints;
 
 use ByTIC\RestClient\Client\AbstractClient;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\UriInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**
@@ -32,7 +33,7 @@ interface EndpointInterface
     /**
      * Get the URI of an endpoint (like /foo-uri).
      */
-    public function getUri(): string;
+    public function getUri(): UriInterface;
 
     /**
      * Get the HTTP method of an endpoint (like GET, POST, ...).

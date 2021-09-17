@@ -20,7 +20,7 @@ trait HasUri
     /**
      * @return UriInterface
      */
-    public function getUri()
+    public function getUri(): UriInterface
     {
         if ($this->uri === null) {
             $this->initBaseUri();
