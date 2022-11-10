@@ -4,6 +4,7 @@ namespace ByTIC\RestClient\Client\Traits;
 
 use ByTIC\RestClient\Client\AbstractClient;
 use ByTIC\RestClient\Endpoints\EndpointInterface;
+use ByTIC\RestClient\Endpoints\Traits\HasClient;
 use ByTIC\RestClient\Request\RequestBuilder;
 
 /**
@@ -13,7 +14,7 @@ use ByTIC\RestClient\Request\RequestBuilder;
 trait HasEndpointExecution
 {
     /**
-     * @param EndpointInterface $endpoint
+     * @param EndpointInterface|HasClient $endpoint
      * @param string $fetch
      * @return mixed
      */
