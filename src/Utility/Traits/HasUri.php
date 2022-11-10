@@ -27,6 +27,7 @@ trait HasUri
         }
         return $this->uri;
     }
+
     /**
      * @param UriInterface|bool $uri
      */
@@ -37,7 +38,15 @@ trait HasUri
 
     protected function initBaseUri()
     {
-        $this->setUri('');
+        $this->setUri($this->generateUri());
+    }
+
+    protected function generateUri(): string
+    {
+        if (defined(static::class . '::BASE_URI')) {
+            return static::BASE_URI;
+        }
+        return '';
     }
 
     /**
