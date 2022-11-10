@@ -4,7 +4,7 @@ namespace ByTIC\RestClient\Endpoints\Traits;
 
 use ByTIC\RestClient\Client\AbstractClient;
 
-class HasClient
+trait HasClient
 {
     protected ?AbstractClient $client = null;
 
