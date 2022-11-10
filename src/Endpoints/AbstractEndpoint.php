@@ -2,8 +2,6 @@
 
 namespace ByTIC\RestClient\Endpoints;
 
-use Symfony\Component\Serializer\SerializerInterface;
-
 /**
  * Class AbstractEndpoint
  * @package ByTIC\RestClient\Endpoints
@@ -11,14 +9,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 abstract class AbstractEndpoint implements EndpointInterface
 {
     use Traits\CanParseResponse;
-
-    /**
-     * @inheritDoc
-     */
-    public function getBody(SerializerInterface $serializer, $streamFactory = null): array
-    {
-        return [[], null];
-    }
+    use Traits\HasBody;
 
     /**
      * @inheritDoc

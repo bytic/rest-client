@@ -13,6 +13,7 @@ use Symfony\Component\Serializer\SerializerInterface;
  */
 interface EndpointInterface
 {
+    public const BODY_FORMAT_JSON = 'json';
 
     /**
      * Get body for an endpoint.
