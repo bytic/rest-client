@@ -2,6 +2,7 @@
 
 namespace ByTIC\RestClient\Endpoints\Traits;
 
+use Psr\Http\Message\StreamFactoryInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
 trait HasBody
@@ -13,13 +14,24 @@ trait HasBody
     /**
      * @inheritDoc
      */
-    public function getBody(SerializerInterface $serializer, $streamFactory = null): array
+    public function getBody(SerializerInterface $serializer, StreamFactoryInterface $streamFactory = null): array
     {
-        $bodyData = $this->getBodyData();
         return [
             $this->generateBodyHeaders(), // bodyHeaders
-            $bodyData == null ? $bodyData : $serializer->serialize($this->getBodyData(), 'json', []) // body
+            $this->generateBodyStream($serializer, $streamFactory), // bodyHeaders
         ];
+    }
+
+    protected function generateBodyStream(SerializerInterface $serializer, StreamFactoryInterface $streamFactory = null)
+    {
+        $bodyData = $this->getBodyData();
+        if ($bodyData == null) {
+            return null;
+        }
+        if ($streamFactory && is_array($this->bodyData)) {
+            return $streamFactory->createStream(http_build_query($bodyData));
+        }
+        return null;
     }
 
     protected function generateBodyHeaders(): array
@@ -33,5 +45,10 @@ trait HasBody
     public function getBodyData()
     {
         return $this->bodyData;
+    }
+
+    public function setBodyData($bodyData)
+    {
+        $this->bodyData = $bodyData;
     }
 }

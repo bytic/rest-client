@@ -40,11 +40,12 @@ trait HasEndpointsCreator
      * @param $body
      * @return DynamicEndpoint
      */
-    protected function createBaseEndpoint($method, $uri, $body)
+    protected function createBaseEndpoint($method, $uri, $body): DynamicEndpoint
     {
         $endpoint = new DynamicEndpoint();
         $endpoint->setMethod($method);
         $endpoint->setUri($uri);
+        $endpoint->setBodyData($body);
         return $endpoint;
     }
 }

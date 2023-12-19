@@ -4,6 +4,7 @@ namespace ByTIC\RestClient\Endpoints;
 
 use ByTIC\RestClient\Client\AbstractClient;
 use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\StreamFactoryInterface;
 use Psr\Http\Message\UriInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -21,10 +22,10 @@ interface EndpointInterface
      * Return value consist of an array where the first item will be a list of headers to add on the request (like the Content Type)
      * And the second value consist of the body object.
      * @param SerializerInterface $serializer
-     * @param null $streamFactory
+     * @param StreamFactoryInterface|null $streamFactory
      * @return array
      */
-    public function getBody(SerializerInterface $serializer, $streamFactory = null): array;
+    public function getBody(SerializerInterface $serializer, StreamFactoryInterface $streamFactory = null): array;
 
     /**
      * Get the query string of an endpoint without the starting ? (like foo=foo&bar=bar).
