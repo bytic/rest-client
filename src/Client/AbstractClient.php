@@ -31,12 +31,7 @@ abstract class AbstractClient
      */
     public function __construct(ClientInterface $httpClient = null, Configuration $configuration = null)
     {
-        $this->setConfiguration(
-            $configuration ? $configuration : $this->discoverConfiguration()
-        );
-
-        $this->setHttpClient(
-            $httpClient ? $httpClient : $this->discoverHttpClient()
-        );
+        $this->initConfiguration($configuration);
+        $this->iniHttpClient($httpClient);
     }
 }

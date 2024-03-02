@@ -38,4 +38,11 @@ trait HasConfiguration
     {
         $this->configuration = $configuration;
     }
+
+    protected function initConfiguration($configuration = null)
+    {
+        $this->setConfiguration(
+            $configuration ?: $this->discoverConfiguration()
+        );
+    }
 }

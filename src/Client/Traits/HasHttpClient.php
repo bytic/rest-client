@@ -37,12 +37,25 @@ trait HasHttpClient
         $this->httpClient = $this->decorateHttpClient($httpClient);
     }
 
+    protected function iniHttpClient($httpClient = null)
+    {
+        $this->setHttpClient(
+            $httpClient ?: $this->discoverHttpClient()
+        );
+    }
+
     /**
      * @return \Psr\Http\Client\ClientInterface
      */
     protected function discoverHttpClient()
     {
-        return \Http\Discovery\Psr18ClientDiscovery::find();
+        $client = \Http\Discovery\Psr18ClientDiscovery::find();
+        if (method_exists($client, 'withOptions')) {
+            $options = $this->getConfiguration()->getOptions();
+            $client = $client->withOptions($options);
+        }
+
+        return $client;
     }
 
     /**

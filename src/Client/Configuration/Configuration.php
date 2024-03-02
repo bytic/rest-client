@@ -11,6 +11,7 @@ use ByTIC\RestClient\Utility\Traits\HasUri;
  */
 class Configuration
 {
+    use Traits\HasClientOptions;
     use Traits\HasDefaultConfiguration;
     use Traits\HasFormats;
     use Traits\HasUserAgent;
