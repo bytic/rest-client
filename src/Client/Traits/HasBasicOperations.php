@@ -12,8 +12,10 @@ trait HasBasicOperations
      * @param string $url
      * @return mixed
      */
-    public function get($url)
+    public function get($url, $params = [])
     {
+        $query = http_build_query($params);
+        $url = $url . ($query ? '?' . $query : '');
         return $this->call("GET", $url, []);
     }
 
