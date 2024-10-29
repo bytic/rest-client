@@ -31,13 +31,12 @@ class RequestBuilder
         $queryString = $endpoint->getQueryString();
         $uriGlue = false === strpos($endpoint->getUri(), '?') ? '?' : '&';
         $uri = $queryString !== '' ? $endpoint->getUri() . $uriGlue . $queryString : $endpoint->getUri();
-        $request = $client->getRequestFactory()->createRequest($endpoint->getMethod(), $uri);
+        $self->request = $client->getRequestFactory()->createRequest($endpoint->getMethod(), $uri);
 
         $self->withBody($body);
         foreach ($endpoint->getHeaders($bodyHeaders) as $name => $value) {
-            $request = $request->withHeader($name, $value);
+            $self->request = $self->request->withHeader($name, $value);
         }
-        $self->request = $request;
         return $self;
     }
 
